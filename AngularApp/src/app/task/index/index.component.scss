@@ -1,0 +1,13 @@
+.task {
+  display: grid;
+  padding: 15px;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 10px;
+  & > task-card {
+    width: 100%;
+  }
+}
+.add {
+  margin: 15px 15px 0px 15px;
+}

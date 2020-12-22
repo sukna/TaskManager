@@ -1,0 +1,159 @@
+<div class="login-page">
+  <mat-card [class.spinner]="loading" class="mat-elevation-z12">
+    <mat-card-title style="text-align: center">Task Manager</mat-card-title>
+    <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+      <mat-tab label="Sign In">
+        <mat-card-content>
+          <!-- LOGIN -->
+          <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Email"
+                formControlName="email"
+                name="email"
+                required
+              />
+              <mat-error
+                *ngIf="
+                  loginFormFields.email.errors
+                    ? loginFormFields.email.errors.required
+                    : false
+                "
+                >Email is required</mat-error
+              >
+              <mat-error
+                *ngIf="
+                  loginFormFields.email.errors
+                    ? loginFormFields.email.errors.email
+                    : false
+                "
+                >Format for email is incorrect</mat-error
+              >
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="password"
+                placeholder="Password"
+                type="password"
+                required
+                name="password"
+              />
+              <mat-error
+                *ngIf="
+                  loginFormFields.password.errors &&
+                  loginFormFields.password.errors.required
+                "
+              >
+                Password is required
+              </mat-error>
+              <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="login-button">
+              Sign In
+            </button>
+          </form>
+          <button
+            mat-raised-button
+            (click)="loginWithGoogle()"
+            class="login-button"
+          >
+            Login with Google
+          </button>
+        </mat-card-content>
+      </mat-tab>
+      <mat-tab label="Sign Up">
+        <mat-card-content>
+          <!-- REGISTER -->
+          <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="firstname"
+                placeholder="First Name"
+                required
+                name="firstname"
+              />
+              <mat-icon matSuffix>perm_identity</mat-icon>
+              <mat-error *ngIf="registerFormFields.firstname.invalid">
+                First Name is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="lastname"
+                placeholder="Last Name"
+                required
+                name="lastname"
+              />
+              <mat-icon matSuffix>perm_identity</mat-icon>
+              <mat-error *ngIf="registerFormFields.lastname.invalid">
+                Last Name is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="telephoneNumber"
+                placeholder="Telephone Number"
+                name="telephoneNumber"
+              />
+              <mat-icon matSuffix>call</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="email"
+                placeholder="Email"
+                required
+                name="email"
+              />
+              <mat-error
+                *ngIf="
+                  registerFormFields.email.errors
+                    ? registerFormFields.email.errors.required
+                    : false
+                "
+                >Email is required</mat-error
+              >
+              <mat-error
+                *ngIf="
+                  registerFormFields.email.errors
+                    ? registerFormFields.email.errors.email
+                    : false
+                "
+                >Format for email is incorrect</mat-error
+              >
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="password"
+                placeholder="Password"
+                type="password"
+                required
+                name="password"
+              />
+              <mat-error
+                *ngIf="
+                  registerFormFields.password.errors &&
+                  registerFormFields.password.errors.required
+                "
+              >
+                Password is required
+              </mat-error>
+              <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="login-button">
+              Sign Up
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</div>

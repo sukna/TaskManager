@@ -1,0 +1,82 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.success-snackbar {
+  background: #17cf30;
+  span {
+    color: black;
+  }
+}
+
+.error-snackbar {
+  background: #f44336;
+  span {
+    color: black;
+  }
+}
+
+.warning-snackbar {
+  background: #db8e2a;
+  span {
+    color: black;
+  }
+}
+
+.timepicker-toogle {
+  .ngx-material-timepicker-toggle {
+    margin-left: auto !important;
+  }
+}
+
+.mat-column-actions {
+  width: 50px;
+}
+
+.mat-column-time {
+  width: 80px;
+  text-align: center;
+  padding: 10px;
+}
+
+.mat-header-cell {
+  padding: 10px !important;
+}
+
+.mat-column-taskLogType {
+  padding: 20px !important;
+}
+
+.toggle-example {
+  display: flex;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner:before {
+  z-index: 100000;
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  width: 60px;
+  height: 60px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner 0.8s linear infinite;
+}

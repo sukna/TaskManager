@@ -1,0 +1,19 @@
+.info-content {
+  display: grid;
+  grid-template-columns: 100px auto;
+  grid-template-rows: auto;
+  margin: 15px;
+  p {
+    margin: 0px;
+    text-align: justify;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 10px;
+  }
+}
+.info-log {
+  margin: 20px;
+  table {
+    width: 100%;
+  }
+}

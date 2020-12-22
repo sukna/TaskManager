@@ -1,0 +1,17 @@
+<mat-card class="mat-elevation-z12">
+  <mat-card-title style="text-align: center">
+    <button class="add" mat-button color="primary" (click)="createTask()">
+      <mat-icon>add_task</mat-icon> Add new task
+    </button></mat-card-title
+  >
+  <mat-card-content>
+    <div class="task">
+      <task-card
+        *ngFor="let task of tasks"
+        (deleteTask)="deleteTask($event)"
+        [data]="task"
+      >
+      </task-card>
+    </div>
+  </mat-card-content>
+</mat-card>

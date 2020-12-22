@@ -1,0 +1,32 @@
+.task-form {
+  margin: 15px;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+mat-card {
+  width: fit-content;
+  margin: auto;
+}
+
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-half-width {
+  width: 50%;
+}
+
+.timepicker-toogle {
+  .ngx-material-timepicker-toggle {
+    margin-left: auto !important;
+  }
+}

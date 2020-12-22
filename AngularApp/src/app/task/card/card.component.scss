@@ -1,0 +1,8 @@
+.task-card {
+  background-color: bisque;
+  margin: 10px;
+  & > mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}

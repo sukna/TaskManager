@@ -1,0 +1,54 @@
+<div class="mat-elevation-z8">
+  <button class="add" mat-button color="primary" (click)="create()">
+    <mat-icon>add_task</mat-icon> Add new task log
+  </button>
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>#</th>
+      <td mat-cell *matCellDef="let taskLog; let i = index">
+        <!-- paginatorRef.pageIndex * paginatorRef.pageSize + (i + 1)  -->
+        {{ paginatorRef.pageIndex * paginatorRef.pageSize + (i + 1) }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef>Spent time</th>
+      <td mat-cell *matCellDef="let taskLog">{{ taskLog.time }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="comment">
+      <th mat-header-cell *matHeaderCellDef>Comment</th>
+      <td mat-cell *matCellDef="let taskLog">{{ taskLog.comment }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="taskLogType">
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let taskLog">
+        {{ taskLog.taskLogType?.name }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let taskLog">
+        <div class="actions">
+          <button mat-mini-fab color="primary" (click)="edit(taskLog.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-mini-fab color="warn" (click)="delete(taskLog.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    #paginatorRef
+  ></mat-paginator>
+</div>

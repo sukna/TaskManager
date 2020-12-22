@@ -1,0 +1,96 @@
+<div class="task-form">
+  <mat-card class="mat-elevation-z12">
+    <mat-card-title style="text-align: center">{{
+      isAddMode ? "Create task" : "Edit task"
+    }}</mat-card-title>
+    <mat-card-content>
+      <form class="example-form" [formGroup]="taskForm" (submit)="submitForm()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="name"
+            placeholder="Ex. Task 1"
+          />
+          <mat-error
+            *ngIf="
+              taskForm.get('name').hasError('name') &&
+              !taskForm.get('name').hasError('required')
+            "
+          >
+            Please enter a task name
+          </mat-error>
+          <mat-error *ngIf="taskForm.get('name').hasError('required')">
+            Task name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Description</mat-label>
+          <textarea
+            formControlName="description"
+            matInput
+            placeholder="Ex. You do only in Prointer..."
+          ></textarea>
+        </mat-form-field>
+        <div *ngIf="!isAddMode">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Start date</mat-label>
+            <input
+              formControlName="startDate"
+              [max]="taskForm.get('endDate').value"
+              matInput
+              [matDatepicker]="startDate | date: 'DD.MM.YYYY.'"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="startDate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>End date</mat-label>
+            <input
+              formControlName="endDate"
+              matInput
+              [min]="taskForm.get('startDate').value"
+              [matDatepicker]="endDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="endDate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="taskStatusCodeId">
+              <mat-option *ngFor="let s of statuses" [value]="s.id">
+                {{ s.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Priority</mat-label>
+            <mat-select formControlName="taskPriorityCodeId">
+              <mat-option *ngFor="let p of priorities" [value]="p.id">
+                {{ p.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Note</mat-label>
+            <textarea
+              formControlName="note"
+              matInput
+              placeholder="Ex. Best note for Prointer task..."
+            ></textarea>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary">
+          {{ isAddMode ? "Create" : "Save" }}
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

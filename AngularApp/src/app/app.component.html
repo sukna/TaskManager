@@ -1,0 +1,11 @@
+<mat-toolbar *ngIf="logged" color="primary">
+  Task Manager - {{ user.firstName }} {{ user.lastName }}
+  <nav style="margin-left: auto">
+    <a mat-button routerLink="/">Tasks</a>
+    <button class="mat-button" (click)="logout()">Logout</button>
+  </nav>
+</mat-toolbar>
+<div *ngIf="loading" class="loading-overlay" #spinnerElement>
+  <mat-spinner></mat-spinner>
+</div>
+<router-outlet></router-outlet>

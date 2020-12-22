@@ -1,0 +1,50 @@
+<div class="info-content">
+  <div>
+    <mat-divider></mat-divider>
+    Task
+  </div>
+  <div>
+    <h1>{{ task?.name }}</h1>
+  </div>
+  <div>
+    <mat-divider></mat-divider>
+    Description
+  </div>
+
+  <p>{{ task?.description }}</p>
+  <div>
+    <mat-divider></mat-divider>
+    Status
+  </div>
+  <p>{{ task?.taskStatusCode?.name }}</p>
+  <div>
+    <mat-divider></mat-divider>
+    Priority
+  </div>
+  <p>{{ task?.taskPriorityCode?.name }}</p>
+  <div>
+    <mat-divider></mat-divider>
+
+    Start date
+  </div>
+  <p>{{ task?.startDate | date: "dd.MM.y." }}</p>
+  <div>
+    <mat-divider></mat-divider>
+
+    End date
+  </div>
+
+  <p>{{ task?.endDate | date: "dd.MM.y." }}</p>
+  <div>
+    <mat-divider></mat-divider>
+
+    Note
+  </div>
+  <p>{{ task?.note }}</p>
+</div>
+<div class="info-log">
+  <task-index
+    (deleteTaskLog)="deleteTaskLog($event)"
+    [data]="task?.taskLogs"
+  ></task-index>
+</div>

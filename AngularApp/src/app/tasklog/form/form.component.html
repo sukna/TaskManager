@@ -1,0 +1,70 @@
+<div class="task-form">
+  <mat-card class="mat-elevation-z12">
+    <mat-card-title style="text-align: center">{{
+      isAddMode ? "Create task log" : "Edit task log"
+    }}</mat-card-title>
+    <mat-card-content>
+      <form
+        class="example-form"
+        [formGroup]="taskLogForm"
+        (submit)="submitForm()"
+      >
+        <mat-form-field class="example-full-width">
+          <mat-label>Comment</mat-label>
+          <textarea
+            formControlName="comment"
+            matInput
+            placeholder="Ex. You do only in Prointer..."
+            required
+          ></textarea>
+          <mat-error *ngIf="taskLogForm.get('comment').hasError('required')">
+            Comment is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Spent time</mat-label>
+          <div class="toggle-example">
+            <input
+              autocomplete="off"
+              [format]="24"
+              [min]="'00:05'"
+              matInput
+              [ngxTimepicker]="timePicker"
+              [disableClick]="true"
+              formControlName="time"
+              readonly
+              required
+            />
+            <ngx-material-timepicker-toggle
+              class="timepicker-toogle"
+              [for]="timePicker"
+            ></ngx-material-timepicker-toggle>
+            <ngx-material-timepicker
+              [minutesGap]="5"
+              #timePicker
+            ></ngx-material-timepicker>
+          </div>
+          <mat-error *ngIf="taskLogForm.get('time').hasError('required')">
+            Time is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Working type</mat-label>
+          <mat-select required formControlName="taskLogTypeId" r>
+            <mat-option *ngFor="let t of types" [value]="t.id">
+              {{ t.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="taskLogForm.get('taskLogTypeId').hasError('required')"
+          >
+            Working type is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary">
+          {{ isAddMode ? "Create" : "Save" }}
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
